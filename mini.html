@@ -8,8 +8,24 @@
 </head>
 <body>
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+
     <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+
+    <a-assets>
+        <a-asset-item id="animated-asset" src="assets/bridge-v2.glb"></a-asset-item>
+    </a-assets>
+                
+    <a-entity
+      id="entity"
+      look-at="[gps-camera]"
+      animation-mixer="loop: repeat"
+      gltf-model="#animated-asset"
+      scale="2000 2000 2000"
+      gps-entity-place="latitude: 51.32991924957895; longitude: 12.370477114226233;"
+    ></a-entity>
+
     <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 51.32992092551733; longitude: 12.370474432017557" scale="10 10 10"></a-entity>
+    
 </a-scene>
 </body>
 </html>
