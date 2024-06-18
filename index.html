@@ -40,13 +40,18 @@
         ></a-asset-item>
       </a-assets>
 
+<!--
+      Test: 51.32991924957895, 12.370477114226233
+      Real: 51.344253, 12.371818
+-->
+        
       <a-entity
           id="entity"
           look-at="[gps-camera]"
           animation-mixer="loop: repeat"
           gltf-model="#animated-asset"
           scale="2000 2000 2000"
-          gps-entity-place="latitude: 51.344253; longitude: 12.371818;"
+          gps-entity-place="latitude: 51.32991924957895; longitude: 12.370477114226233;"
       ></a-entity>
       <a-entity material='color: blue' geometry='primitive: box' gps-new-entity-place="latitude: 51.332346; longitude: 12.406692" scale="10 10 10"></a-entity>
       <a-camera gps-camera rotation-reader></a-camera>
