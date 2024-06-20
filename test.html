@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <title>Blaues Wunder</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/assets/favicon.ico" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="mask-icon" href="/assets/favicon.svg" color="#FFFFFF">
+    <meta name="theme-color" content="#ffffff">
+    <!-- A-Frame itself -->
+    <script src="./assets/aframe_1.6.0.js"></script>
+    <!-- Pure three.js code that the A-Frame components use for location-based AR -->
+    <script type='text/javascript' src='./assets/ar-threex-location-only.js'></script>
+     <!-- AR.js A-Frame components -->
+    <script type='text/javascript' src='./assets/aframe-ar.js'></script>
+  </head>
+  <body>
+    <div>
+      <pre id="log" style='float: right; background: wheat; height: 100vh; padding-top: 100px;'></pre>
+    </div>
+    
+    <a-scene stats arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-assets>
+        <a-asset-item id="bridge" src="./assets/bridge-v2-draco.gltf"></a-asset-item>
+      </a-assets>
+    
+      <a-entity camera look-controls rotation-reader>
+        <a-entity gltf-model="#bridge" position="0 0 -5" scale="0.1 0.1 0.1"></a-entity>
+      </a-entity>
+    </a-scene>
+    <script>
+      (function () {
+          var old = console.log;
+          var logger = document.getElementById('log');
+          console.log = function () {
+            for (var i = 0; i < arguments.length; i++) {
+              if (typeof arguments[i] == 'object') {
+                  logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
+              } else {
+                  logger.innerHTML += arguments[i] + '<br />';
+              }
+            }
+          }
+      })();
+
+      function handleOrientation(event) {
+        console.log("deviceorientation absolute: " + event.absolute);
+        console.log("deviceorientation alpha: " + event.alpha);
+        console.log("deviceorientation beta: " + event.beta);
+        console.log("deviceorientation gamma: " + event.gamma);
+
+      }
+
+      window.addEventListener("deviceorientation", handleOrientation);
+
+    </script>
+  </body>
+</html>
