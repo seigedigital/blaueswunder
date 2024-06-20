@@ -16,61 +16,30 @@
      <!-- AR.js A-Frame components -->
     <script type='text/javascript' src='./assets/aframe-ar.js'></script>
   </head>
-  <body>
-    <div>
-      <pre id="log" style='float: right; background: wheat; height: 100vh; padding-top: 100px;'></pre>
-    </div>
-    <a-scene
+  <body style='margin: 0; overflow: hidden;'>
+    
+    <a-scene 
+      stats
+      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
       vr-mode-ui='enabled: false'
-      renderer="logarithmicDepthBuffer: true;"
-      embedded
-      loading-screen="enabled: false;"
-      arjs="sourceType: webcam; debugUIEnabled: false;"
-    >
-      <a-assets>
-        <a-asset-item
-            id="animated-asset"
-            src="assets/bridge.glb"
-        ></a-asset-item>
-      </a-assets>
+      arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
+      renderer='antialias: true; alpha: true'>
+
+      <a-camera
+        rotation-reader
+        gps-new-camera='gpsMinDistance: 10; simulateLatitude: 51.33242; simulateLongitude: 12.371818; alert: true'
+        look-controls-enabled='false'
+        arjs-device-orientation-controls='smoothingFactor: 0.1'>
+      </a-camera>
 
       <a-entity
-          id="entity"
-          look-at="[gps-camera]"
-          animation-mixer="loop: repeat"
-          gltf-model="#animated-asset"
-          scale="2000 2000 2000"
-          gps-entity-place="latitude: 51.344253; longitude: 12.371818;"
-      ></a-entity>
-      <a-entity material='color: blue' geometry='primitive: box' gps-new-entity-place="latitude: 51.332346; longitude: 12.406692" scale="10 10 10"></a-entity>
-      <a-camera gps-camera rotation-reader></a-camera>
-    </a-scene>
+        gltf-model="assets/bridge-v2-draco.gltf"
+        position="0 0 -5"
+        rotation="0 90 0"
+        scale="0.1 0.1 0.1"
+        gps-new-entity-place="latitude: 51.33242; longitude: 12.371818">
+      </a-entity>
 
-    <script>
-      (function () {
-          var old = console.log;
-          var logger = document.getElementById('log');
-          console.log = function () {
-            for (var i = 0; i < arguments.length; i++) {
-              if (typeof arguments[i] == 'object') {
-                  logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
-              } else {
-                  logger.innerHTML += arguments[i] + '<br />';
-              }
-            }
-          }
-      })();
-
-      function handleOrientation(event) {
-        console.log("deviceorientation absolute: " + event.absolute);
-        console.log("deviceorientation alpha: " + event.alpha);
-        console.log("deviceorientation beta: " + event.beta);
-        console.log("deviceorientation gamma: " + event.gamma);
-
-      }
-
-      window.addEventListener("deviceorientation", handleOrientation);
-
-    </script>
+  </a-scene>
   </body>
 </html>
