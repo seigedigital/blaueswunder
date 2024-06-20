@@ -9,7 +9,7 @@
 <body>
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='logarithmicDepthBuffer: true; colorManagement: true; sortObjects: true; antialias: true; alpha: true'>
 
-    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+    <a-camera gps-new-camera='gpsMinDistance: 0' camera="near: 0.01"></a-camera>
 
     <a-entity
         material='color: blue'
