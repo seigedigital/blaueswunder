@@ -22,6 +22,7 @@
     -->
     
     <a-entity
+        id="ar-object"
         gltf-model="test-unified.glb"
         gps-new-entity-place="latitude: 51.32992092551733; longitude: 12.370474432017557"
         position="0 -100 0"
@@ -41,5 +42,28 @@
     -->
     
 </a-scene>
+
+<script>
+  AFRAME.registerComponent('rotation-reader', {
+    init: function () {
+      const object = document.querySelector('#ar-object');
+      object.object3D.rotation.set(0, THREE.Math.degToRad(90), 0); // Example fixed rotation
+
+      // Adjust for initial camera orientation offset if necessary
+      const camera = document.querySelector('[gps-camera]');
+      camera.addEventListener('componentchanged', function (evt) {
+        if (evt.detail.name === 'rotation') {
+          const initialRotation = evt.detail.newData;
+          object.object3D.rotation.set(
+            THREE.Math.degToRad(0 - initialRotation.x),
+            THREE.Math.degToRad(90 - initialRotation.y),
+            THREE.Math.degToRad(0 - initialRotation.z)
+          );
+        }
+      });
+    }
+  });
+</script>
+    
 </body>
 </html>
