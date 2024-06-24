@@ -28,7 +28,7 @@
         position="0 -100 0"
         material="side: double"
         scale="100 100 100"
-        rotation="0 0 0"
+        rotation="0 10 0"
     ></a-entity>
 
     <!--
@@ -43,28 +43,6 @@
     -->
     
 </a-scene>
-
-<script>
-      AFRAME.registerComponent('rotation-reader', {
-        schema: {
-          default: {},
-          parse: function () {
-            return null;
-          },
-        },
-        init: function () {
-          window.addEventListener('deviceorientation', (event) => {
-            // Adjust the following values as per your requirement
-            const absolute = event.absolute ? event.absolute : 0;
-            this.el.object3D.rotation.set(0, THREE.Math.degToRad(absolute), 0);
-          });
-        },
-      });
-
-      // document
-      //  .querySelector('#ar-object')
-      //  .setAttribute('rotation', '0 90 0'); // Example fixed rotation
-</script>
     
 </body>
 </html>
