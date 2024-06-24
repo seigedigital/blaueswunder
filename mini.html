@@ -12,7 +12,7 @@
     },
     init: function () {
       window.addEventListener('deviceorientation', (evt) => {
-        const heading = 360 - evt.alpha;  // Assuming North is 0 degrees
+        const heading = 359 - evt.alpha;  // Assuming North is 0 degrees
         this.el.setAttribute('rotation', {x: 0, y: heading + this.data.offset, z: 0});
       });
     }
