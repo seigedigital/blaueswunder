@@ -5,6 +5,19 @@
 <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+<script>
+  AFRAME.registerComponent('rotation-reader', {
+    schema: {
+      offset: {type: 'number', default: 0}
+    },
+    init: function () {
+      window.addEventListener('deviceorientation', (evt) => {
+        const heading = 360 - evt.alpha;  // Assuming North is 0 degrees
+        this.el.setAttribute('rotation', {x: 0, y: heading + this.data.offset, z: 0});
+      });
+    }
+  });
+</script>
 </head>
 <body>
 <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='logarithmicDepthBuffer: true; colorManagement: true; sortObjects: true; antialias: true; alpha: true'>
@@ -25,6 +38,7 @@
         id="ar-object"
         gltf-model="test-unified.glb"
         gps-new-entity-place="latitude: 51.32992092551733; longitude: 12.370474432017557"
+        rotation-reader="offset: 0"
         position="0 -100 0"
         material="side: double"
         scale="100 100 100"
