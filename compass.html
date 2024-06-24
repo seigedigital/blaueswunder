@@ -13,21 +13,6 @@
     </style>
   </head>
   <body>
-    <a-scene
-      vr-mode-ui="enabled: false"
-      renderer="logarithmicDepthBuffer: true;"
-      embedded
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
-    >
-      <a-camera gps-camera></a-camera>
-      <a-entity
-        id="compass"
-        gps-entity-place="latitude: 0; longitude: 0"
-        position="0 1.5 0"
-      >
-        <a-box color="red" depth="0.1" height="1" width="0.1"></a-box>
-      </a-entity>
-    </a-scene>
 
     <script>
       AFRAME.registerComponent('compass-rotation', {
@@ -46,5 +31,23 @@
 
       document.querySelector('#compass').setAttribute('compass-rotation', '');
     </script>
+    
+    <a-scene
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+    >
+      <a-camera gps-camera></a-camera>
+      <a-entity
+        id="compass"
+        gps-entity-place="latitude: 0; longitude: 0"
+        position="0 1.5 0"
+      >
+        <a-box color="red" depth="0.1" height="1" width="0.1"></a-box>
+      </a-entity>
+    </a-scene>
+
+
   </body>
 </html>
