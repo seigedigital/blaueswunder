@@ -18,7 +18,15 @@
   </head>
   <body style='margin: 0; overflow: hidden;'>
     
-    <a-scene 
+    <div style='z-index: 10000; position: fixed; right: 20px; top: 20px; background-color: antiquewhite;'>
+      <p>
+        <label for="scale">Scale:</label>
+        <output id="value"></output>
+      </p>
+      <input type="range" min="0" max="10" value="0.1" step="0.1" id="scale">
+    </div>
+
+    <a-scene
       stats
       gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
       vr-mode-ui='enabled: false'
@@ -33,6 +41,7 @@
       </a-camera>
 
       <a-entity
+        id="entity"
         gltf-model="assets/bridge-v2-draco.gltf"
         position="0 0 -5"
         rotation="0 90 0"
@@ -41,5 +50,16 @@
       </a-entity>
 
   </a-scene>
+
+  <script>
+      const slider = document.getElementById("scale");
+      const value = document.getElementById("value");
+      const entityItem = document.getElementById("entity");
+
+      slider.oninput = function() {
+        value.textContent = slider.value;
+        entityItem.setAttribute("scale", `${slider.value} ${slider.value} ${slider.value}`);
+      } 
+  </script>
   </body>
 </html>
