@@ -9,24 +9,28 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180x180.png" sizes="180x180">
     <link rel="mask-icon" href="/assets/favicon.svg" color="#FFFFFF">
     <meta name="theme-color" content="#ffffff">
-    <!-- Import the component -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
   </head>
   <body>
+    <div style='z-index: 10000; position: fixed; right: 20px; top: 20px; background-color: antiquewhite;'>
+      <h1>Click Button to open in AR-Mode</h1>
+    </div>
     <!-- src="assets/Astronaut.glb" -->
     <model-viewer
-    style='width: 100vw; height: 80vh;'
-    src="assets/bridge-v2-draco.gltf"
-    ar
-    poster="assets/bridge.webp"
-    ar-scale="fixed"
-    touch-action="pan-y"
-    shadow-intensity="2"
-    shadow-softness="0"
-    camera-controls
-    skybox-image="assets/model.jpg"
-    skybox-height="50m"
-    max-camera-orbit="auto 90deg auto"
-    xr-environment></model-viewer>
+      style='width: 100vw; height: 80vh;'
+      src="assets/bridge-v2-draco.gltf"
+      ar
+      poster="assets/bridge.webp"
+      ar-scale="fixed"
+      touch-action="pan-y"
+      shadow-intensity="2"
+      shadow-softness="0"
+      camera-controls
+      skybox-image="assets/model.jpg"
+      skybox-height="50m"
+      max-camera-orbit="auto 90deg auto"
+      xr-environment
+    >
+    </model-viewer>
   </body>
 </html>
