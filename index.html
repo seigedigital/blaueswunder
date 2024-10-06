@@ -13,7 +13,7 @@
       background-color: #f4f4f4;
     }
     .container {
-      padding: 15px;
+      padding: 10px;
       background-color: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
@@ -23,7 +23,6 @@
       width: 200px;
     }
     h1 {
-      font-size: 28px;
       color: #4f94cd;
     }
     p {
@@ -46,14 +45,13 @@
     }
     .section {
       margin: 20px 0;
+      padding-top: 10px;
     }
     .section-info {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      height: 400px;
       overflow: hidden;
+      margin-bottom: 20px;
     }
     .section video {
       position: absolute;
@@ -62,25 +60,14 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-    .section-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.3);
-      z-index: 1;
-    }
-    .section-content {
-      color: white;
-      position: relative;
-      padding: 0 20px;
-      z-index: 2;
+      border-radius: 5px;
     }
     .section img {
       width: 100%;
       height: auto;
+    }
+    .footer {
+      border-top: 1px solid #4f94cd;
     }
   </style>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
@@ -89,9 +76,8 @@
 
 <div class="container">
   <div class="header">
-    <h1>Blaues WundAR von Maix Mayer (Leipzig)</h1>
-    <p>Ein Kunstprojekt im Auftrag der Leipzig Tourismus und Marketing GmbH für das 35. Leipziger Lichtfest 2024.</p>
-    <p><img src="./assets/leipziglogo.png" style="display:inline-block;"></p>
+    <h1>Blaues WundAR</h1>
+    <h2>Maix Mayer (Leipzig)</h2>
   </div>
 
   <div class="section">
@@ -100,14 +86,14 @@
         <source src="./assets/model.mp4" type="video/mp4">
         Dein Browser unterstützt kein Video.
       </video>
-      <div class="section-overlay"></div>
-      <div class="section-content">
-        <p>Als Leipziger beteiligte sich Maix Mayer aktiv an den Montagsdemonstrationen 1989 auf dem Leipziger Ring und dokumentierte dies per Video. Der wichtigste Standpunkt für die mediale Dokumentation der Demonstrationen war die 2004 abgerissene Fußgängerbrücke, von den Leipzigern „Blaues Wunder“ genannt. Mittels Augmented-Reality (AR) wird das Bauwerk im Stadtraum am alten Ort wieder erlebbar.</p>
-        <p>Die App „Blaues WundAR“ errichtet die Brücke virtuell wieder und macht so das „Blaue Wunder“ zum WundAR. Via eingeschalteter Handykamera entsteht eine Überlagerung des Livemodus mit einer 3D-Animation der Brücke.</p>
-      </div>
     </div>
     <a href="#model-viewer-section" class="cta-button">Erlebe das Blaue WundAR</a>
-    <a href="#location-section" class="cta-button">Informationen zum Ausprobieren</a>
+    <a href="#location-section" class="cta-button">Mehr erfahren und ausprobieren</a>
+  </div>
+
+  <div class="section">
+    <p>Als Leipziger beteiligte sich Maix Mayer aktiv an den Montagsdemonstrationen 1989 auf dem Leipziger Ring und dokumentierte dies per Video. Der wichtigste Standpunkt für die mediale Dokumentation der Demonstrationen war die 2004 abgerissene Fußgängerbrücke, von den Leipzigern „Blaues Wunder“ genannt. Mittels Augmented-Reality (AR) wird das Bauwerk im Stadtraum am alten Ort wieder erlebbar.</p>
+    <p>Die App „Blaues WundAR“ errichtet die Brücke virtuell wieder und macht so das „Blaue Wunder“ zum WundAR. Via eingeschalteter Handykamera entsteht eine Überlagerung des Livemodus mit einer 3D-Animation der Brücke.</p>
   </div>
 
   <div id="model-viewer-section" class="section">
@@ -168,6 +154,8 @@
   </div>
 
   <div class="footer">
+    <p>Ein Kunstprojekt im Auftrag der Leipzig Tourismus und Marketing GmbH für das 35. Leipziger Lichtfest 2024.</p>
+    <p><img src="./assets/leipziglogo.png" style="display:inline-block;"></p>
     <p><strong>Technische Umsetzung:</strong><br>
       <a href="https://seige.digital/" target="_blank">seige.digital GbR</a> in Zusammenarbeit mit<br>
       <a href="https://digitalwarenkombinat.de/" target="_blank">Digitalwarenkombinat GbR</a> und Wilhelm Herbrich</p>
