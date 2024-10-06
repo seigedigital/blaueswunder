@@ -1,65 +1,172 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <title>Blaues Wunder</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-    <link rel="alternate icon" href="/assets/favicon.ico" type="image/png" sizes="16x16">
-    <link rel="apple-touch-icon" href="/assets/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="mask-icon" href="/assets/favicon.svg" color="#FFFFFF">
-    <meta name="theme-color" content="#ffffff">
-    <!-- A-Frame itself -->
-    <script src="./assets/aframe.js"></script>
-    <!-- Pure three.js code that the A-Frame components use for location-based AR -->
-    <script type='text/javascript' src='./assets/ar-threex-location-only.js'></script>
-     <!-- AR.js A-Frame components -->
-    <script type='text/javascript' src='./assets/aframe-ar.js'></script>
-  </head>
-  <body style='margin: 0; overflow: hidden;'>
-    
-    <div style='z-index: 10000; position: fixed; right: 20px; top: 20px; background-color: antiquewhite;'>
-      <p>
-        <label for="scale">Scale:</label>
-        <output id="value"></output>
-      </p>
-      <input type="range" min="0" max="10" value="0.1" step="0.1" id="scale">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blaues WundAR</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      padding: 15px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      text-align: center;
+    }
+    .header img {
+      width: 200px;
+    }
+    h1 {
+      font-size: 28px;
+      color: #4f94cd;
+    }
+    p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #4f94cd;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin: 10px 0;
+      text-align: center;
+      font-size: 16px;
+    }
+    .cta-button:hover {
+      background-color: #00aacc;
+    }
+    .section {
+      margin: 20px 0;
+    }
+    .section-info {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .section video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .section-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .section-content {
+      color: white;
+      position: relative;
+      padding: 0 20px;
+      z-index: 2;
+    }
+    .section img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Blaues WundAR von Maix Mayer (Leipzig)</h1>
+    <p>Ein Kunstprojekt im Auftrag der Leipzig Tourismus und Marketing GmbH für das 35. Leipziger Lichtfest 2024.</p>
+    <p><img src="./assets/leipziglogo.png" style="display:inline-block;"></p>
+  </div>
+
+  <div class="section">
+    <div class="section-info">
+      <video autoplay muted loop>
+        <source src="./assets/model.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="section-overlay"></div>
+      <div class="section-content">
+        <p>Als Leipziger beteiligte sich Maix Mayer aktiv an den Montagsdemonstrationen 1989 auf dem Leipziger Ring und dokumentierte dies per Video. Der wichtigste Standpunkt für die mediale Dokumentation der Demonstrationen war die 2004 abgerissene Fußgängerbrücke, von den Leipzigern „Blaues Wunder“ genannt. Mittels Augmented-Reality (AR) wird das Bauwerk im Stadtraum am alten Ort wieder erlebbar.</p>
+        <p>Die App „Blaues WundAR“ errichtet die Brücke virtuell wieder und macht so das „Blaue Wunder“ zum WundAR. Via eingeschalteter Handykamera entsteht eine Überlagerung des Livemodus mit einer 3D-Animation der Brücke.</p>
+      </div>
     </div>
+    <a href="#model-viewer-section" class="cta-button">Erlebe das Blaue WundAR</a>
+    <a href="#location-section" class="cta-button">Informationen zum Ausprobieren</a>
+  </div>
 
-    <a-scene
-      stats
-      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
-      vr-mode-ui='enabled: false'
-      arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
-      renderer='antialias: true; alpha: true'>
+  <div id="model-viewer-section" class="section">
+    <h2>Erlebe die virtuelle Brücke</h2>
+    <p>Hier kannst du die Brücke mittels Augmented Reality direkt auf deinem Smartphone erleben:</p>
+    <div style="height: 80vh;">
+      <model-viewer
+        style="width: 100%;
+        height: 100%;
+        background-color: #232829;"
+        src="assets/bridgeV3.glb"
+        ar ar-modes="webxr scene-viewer quick-look"
+        camera-controls
+        tone-mapping="neutral"
+        poster="assets/poster.webp"
+        shadow-intensity="1"
+        auto-rotate>
+        <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+        </div>
+        <button slot="ar-button" id="ar-button">
+          View in your space
+        </button>
+        <div id="ar-prompt" style="position: absolute;
+          left: 50%;
+          bottom: 175px;
+          animation: elongate 2s infinite ease-in-out alternate;
+          display: none;">
+          <img alt="Hand icon" src="https://modelviewer.dev/shared-assets/icons/hand.png">
+        </div>
+      </model-viewer>
+    </div>
+  </div>
 
-      <a-camera
-        rotation-reader
-        gps-new-camera='gpsMinDistance: 10; simulateLatitude: 51.33242; simulateLongitude: 12.371818; alert: true'
-        look-controls-enabled='false'
-        arjs-device-orientation-controls='smoothingFactor: 0.1'>
-      </a-camera>
+  <div id="location-section" class="section">
+    <h2>Vor Ort ausprobieren</h2>
+    <p><img src="./assets/screenshot.PNG" style="display:inline-block;"></p>
+    <p>Das Blaue WundAR kann vor Ort am Goerdelerring während des Leipziger Lichtfestes 2024 ausprobiert werden. Begib dich dafür an die Stationen vor Ort und lass die virtuelle Brücke in ihrer alten Position wiederauferstehen.</p>
+    <p>Weitere Informationen zur Veranstaltung findest du <a href="https://www.leipzig.de/freizeit-kultur-und-tourismus/veranstaltungen-und-termine/jubilaeen-und-festivals/lichtfest">hier</a>.</p>
+  </div>
 
-      <a-entity
-        id="entity"
-        gltf-model="assets/bridge-v2-draco.gltf"
-        position="0 0 -5"
-        rotation="0 90 0"
-        scale="0.1 0.1 0.1"
-        gps-new-entity-place="latitude: 51.33242; longitude: 12.371818">
-      </a-entity>
+  <div class="footer">
+    <p><strong>Technische Umsetzung:</strong><br>
+      <a href="https://seige.digital/" target="_blank">seige.digital GbR</a> in Zusammenarbeit mit<br>
+      <a href="https://digitalwarenkombinat.de/" target="_blank">Digitalwarenkombinat GbR</a> und Wilhelm Herbrich</p>
+    <p><a href="https://blaueswunder.maixmayer.studio/datenschutzerklarung.html">Datenschutzerklärung</a></p>
+  </div>
+</div>
 
-  </a-scene>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
 
-  <script>
-      const slider = document.getElementById("scale");
-      const value = document.getElementById("value");
-      const entityItem = document.getElementById("entity");
-
-      slider.oninput = function() {
-        value.textContent = slider.value;
-        entityItem.setAttribute("scale", `${slider.value} ${slider.value} ${slider.value}`);
-      } 
-  </script>
-  </body>
+</body>
 </html>
