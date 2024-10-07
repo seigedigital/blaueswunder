@@ -3,76 +3,109 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blaues WundAR</title>
+  <title>Blaues WundAR - Kunst erleben in Augmented Reality</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Arial', sans-serif;
       color: #333;
       margin: 0;
       padding: 0;
       background-color: #f4f4f4;
+      line-height: 1.6;
     }
     .container {
-      padding: 10px;
+      padding: 20px;
       background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 1200px;
+      margin: 20px auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
-      text-align: center;
     }
     .header {
-      padding-bottom: 10px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      color: #4f94cd;
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
     }
     .header h2 {
-      font-size: 1.25em;
-      line-height: 0.5em;
+      font-size: 1.5em;
+      color: #6c757d;
+      margin-bottom: 20px;
     }
-    h1 {
-      color: #4f94cd;
-      margin-block: 0.5em;
-    }
-    p {
-      line-height: 1.6;
-      font-size: 16px;
+    .header img {
+      width: 180px;
+      margin-bottom: 20px;
     }
     .cta-button {
       display: inline-block;
       background-color: #4f94cd;
       color: white;
-      padding: 20px;
+      padding: 15px 30px;
       border-radius: 5px;
       text-decoration: none;
-      margin: 10px 0;
-      text-align: center;
-      font-size: 16px;
+      font-size: 18px;
+      margin: 20px 0;
+      transition: background-color 0.3s;
     }
     .cta-button:hover {
-      background-color: #00aacc;
+      background-color: #005f80;
     }
     .section {
-      margin: 20px 0;
-      padding-top: 10px;
+      margin: 40px 0;
     }
     .section-info {
       position: relative;
-      height: 400px;
+      height: 500px;
       overflow: hidden;
-      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
     }
-    .section video {
+    .section-info video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 5px;
+      border-radius: 10px;
     }
-    .section img {
-      width: 100%;
-      height: auto;
+    h2 {
+      color: #4f94cd;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 1.3em;
+      color: #4f94cd;
+      margin-top: 30px;
+    }
+    p {
+      font-size: 18px;
+      margin: 10px 0;
     }
     .footer {
-      border-top: 1px solid #4f94cd;
+      border-top: 2px solid #004085;
+      margin-top: 50px;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #6c757d;
+    }
+    .footer img {
+      width: 120px;
+      margin-top: 20px;
+    }
+    .footer a {
+      color: #004085;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer a:hover {
+      text-decoration: underline;
     }
   </style>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
@@ -80,14 +113,16 @@
 <body>
 
 <div class="container">
+  <!-- Header -->
   <div class="header">
     <h1>Blaues WundAR</h1>
-    <h2>Maix Mayer (Leipzig)</h2>
+    <h2>Ein Kunstprojekt von Maix Mayer (Leipzig)</h2>
     <a href="https://apps.apple.com/de/app/blaues-wundar/id6720764996" target="_blank">
-      <p><img src="./assets/badge-app-store.png" style="display:inline-block;"></p>
+      <img src="./assets/badge-app-store.png" alt="App Store Badge">
     </a>
   </div>
 
+  <!-- Video Section -->
   <div class="section">
     <div class="section-info">
       <video autoplay muted loop>
@@ -95,77 +130,37 @@
         Dein Browser unterstützt kein Video.
       </video>
     </div>
-    <a href="#model-viewer-section" class="cta-button">Erlebe das Blaue WundAR</a>
-    <a href="#location-section" class="cta-button">Mehr erfahren und ausprobieren</a>
+    <a href="#model-viewer-section" class="cta-button">Jetzt das Blaue WundAR erleben</a>
   </div>
 
-  <div class="section">
-    <p>Als Leipziger beteiligte sich Maix Mayer aktiv an den Montagsdemonstrationen 1989 auf dem Leipziger Ring und dokumentierte dies per Video. Der wichtigste Standpunkt für die mediale Dokumentation der Demonstrationen war die 2004 abgerissene Fußgängerbrücke, von den Leipzigern „Blaues Wunder“ genannt. Mittels Augmented-Reality (AR) wird das Bauwerk im Stadtraum am alten Ort wieder erlebbar.</p>
-    <p>Die App „Blaues WundAR“ errichtet die Brücke virtuell wieder und macht so das „Blaue Wunder“ zum WundAR. Via eingeschalteter Handykamera entsteht eine Überlagerung des Livemodus mit einer 3D-Animation der Brücke.</p>
-  </div>
-
+  <!-- App Download Section -->
   <div id="model-viewer-section" class="section">
-    <h2>Erlebe die virtuelle Brücke</h2>
-    <p>Hier kannst du die Brücke mittels Augmented Reality direkt auf deinem Smartphone erleben</p>
-    <div style="height: 80vh;">
-      <model-viewer
-        style="width: 100%;
-        height: 100%;"
-        src="assets/bridgeV4.glb"
-        ar ar-modes="webxr scene-viewer quick-look"
-        camera-controls
-        tone-mapping="neutral"
-        poster="assets/poster.webp"
-        shadow-intensity="1"
-        auto-rotate>
-        <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
-        </div>
-        <button slot="ar-button" id="ar-button"
-          style="background-image: url(./assets/arbutton.png);
-          background-repeat: no-repeat;
-          background-size: 20px 20px;
-          background-position: 12px 50%;
-          background-color: #fff;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          white-space: nowrap;
-          bottom: 132px;
-          padding: 0px 16px 0px 40px;
-          font-family: Roboto Regular, Helvetica Neue, sans-serif;
-          font-size: 14px;
-          color: #4f94cd;
-          height: 36px;
-          line-height: 36px;
-          border-radius: 18px;
-          border: 1px solid #DADCE0;">
-          AR-Ansicht öffnen
-        </button>
-        <div id="ar-prompt" style="position: absolute;
-          left: 50%;
-          bottom: 175px;
-          animation: elongate 2s infinite ease-in-out alternate;
-          display: none;">
-          <img alt="Hand icon" src="https://modelviewer.dev/shared-assets/icons/hand.png">
-        </div>
-      </model-viewer>
-    </div>
+    <h2>Erlebe Kunst in einer neuen Dimension</h2>
+    <p>Mit der <strong>App Blaues WundAR</strong> tauchst du in eine faszinierende Augmented Reality-Welt ein, in der Kunst lebendig wird. Lade die App herunter und starte dein Abenteuer!</p>
+    <a href="https://apps.apple.com/de/app/blaues-wundar/id6720764996" target="_blank">
+      <img src="./assets/badge-app-store.png" alt="App Store Badge">
+    </a>
+    <p>Demnächst im Google Play Store verfügbar.</p>
+
+    <h3>So nutzt du die App richtig</h3>
+    <p><strong>Kompass kalibrieren:</strong></p>
+    <ol>
+      <li>Gehe zu „Einstellungen“ > „Datenschutz und Sicherheit“ > „Ortungsdienste“.</li>
+      <li>Wähle "Systemdienste" und aktiviere „Kompasskalibrierung“.</li>
+    </ol>
+    <p><strong>Genauen Standort freigeben:</strong></p>
+    <ol>
+      <li>Gehe zu „Einstellungen“ > „Datenschutz und Sicherheit“ > „Ortungsdienste“.</li>
+      <li>Wähle <i>Blaues WundAR</i> und aktiviere „Genauer Standort“.</li>
+    </ol>
   </div>
 
-  <div id="location-section" class="section">
-    <h2>Vor Ort ausprobieren</h2>
-    <p><img src="./assets/screenshot.PNG" style="display:inline-block;"></p>
-    <p>Das Blaue WundAR kann vor Ort am Goerdelerring während des Leipziger Lichtfestes 2024 ausprobiert werden. Begib dich dafür an die Stationen vor Ort und lass die virtuelle Brücke in ihrer alten Position wiederauferstehen.</p>
-    <p>Weitere Informationen zur Veranstaltung findest du <a href="https://www.leipzig.de/freizeit-kultur-und-tourismus/veranstaltungen-und-termine/jubilaeen-und-festivals/lichtfest">hier</a>.</p>
-  </div>
-
+  <!-- Footer -->
   <div class="footer">
     <p>Ein Kunstprojekt im Auftrag der Leipzig Tourismus und Marketing GmbH für das 35. Leipziger Lichtfest 2024.</p>
-    <p><img src="./assets/leipziglogo.png" style="display:inline-block;"></p>
-    <p><strong>Technische Umsetzung:</strong><br>
-      <a href="https://seige.digital/" target="_blank">seige.digital GbR</a> in Zusammenarbeit mit<br>
-      <a href="https://digitalwarenkombinat.de/" target="_blank">Digitalwarenkombinat GbR</a> und Wilhelm Herbrich</p>
+    <a href="https://www.leipzig.de/freizeit-kultur-und-tourismus/veranstaltungen-und-termine/jubilaeen-und-festivals/lichtfest" target="_blank">Mehr zur Veranstaltung</a>
+    <p><img src="./assets/leipziglogo.png" alt="Leipzig Logo"></p>
+    <p>Technische Umsetzung: <a href="https://seige.digital/" target="_blank">seige.digital GbR</a> in Zusammenarbeit mit <a href="https://digitalwarenkombinat.de/" target="_blank">Digitalwarenkombinat GbR</a> und Wilhelm Herbrich.</p>
     <p><a href="https://blaueswunder.maixmayer.studio/datenschutzerklarung.html">Datenschutzerklärung</a></p>
   </div>
 </div>
