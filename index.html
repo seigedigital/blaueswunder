@@ -110,6 +110,7 @@
       text-decoration: underline;
     }
   </style>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -131,11 +132,11 @@
         Dein Browser unterstützt kein Video.
       </video>
     </div>
-    <a href="#model-viewer-section" class="cta-button">Jetzt das Blaue WundAR erleben</a>
+    <a href="#app-section" class="cta-button">Jetzt das Blaue WundAR erleben</a>
   </div>
 
   <!-- App Download Section -->
-  <div id="model-viewer-section" class="section">
+  <div id="app-section" class="section">
     <h2>Erlebe Kunst in einer neuen Dimension</h2>
     <p>Mit der <strong>App Blaues WundAR</strong> tauchst du in eine faszinierende Augmented Reality-Welt ein, in der Kunst lebendig wird. Lade die App herunter und starte dein Abenteuer!</p>
     <a href="https://apps.apple.com/de/app/blaues-wundar/id6720764996" target="_blank">
@@ -156,14 +157,57 @@
     </ol>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <p>Ein Kunstprojekt im Auftrag der Leipzig Tourismus und Marketing GmbH für das 35. Leipziger Lichtfest 2024.</p>
-    <a href="https://www.leipzig.de/freizeit-kultur-und-tourismus/veranstaltungen-und-termine/jubilaeen-und-festivals/lichtfest" target="_blank">Mehr zur Veranstaltung</a>
-    <p><img src="./assets/leipziglogo.png" alt="Leipzig Logo"></p>
-    <p>Technische Umsetzung: <a href="https://seige.digital/" target="_blank">seige.digital GbR</a> in Zusammenarbeit mit <a href="https://digitalwarenkombinat.de/" target="_blank">Digitalwarenkombinat GbR</a> und Wilhelm Herbrich.</p>
-    <p><a href="https://blaueswunder.maixmayer.studio/datenschutzerklarung.html">Datenschutzerklärung</a></p>
+  <div style="height: 50vh; border-top: 2px solid #004085;">
+    <model-viewer
+      style="width: 100%;
+      height: 100%;"
+      src="assets/bridgeV5.glb"
+      ar ar-modes="webxr scene-viewer quick-look"
+      camera-controls
+      tone-mapping="neutral"
+      poster="assets/poster.webp"
+      shadow-intensity="1"
+      auto-rotate>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button"
+        style="background-image: url(./assets/arbutton.png);
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        background-position: 12px 50%;
+        background-color: #fff;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        bottom: 132px;
+        padding: 0px 16px 0px 40px;
+        font-family: Roboto Regular, Helvetica Neue, sans-serif;
+        font-size: 14px;
+        color: #4f94cd;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 18px;
+        border: 1px solid #DADCE0;">
+        AR-Ansicht öffnen
+      </button>
+      <div id="ar-prompt" style="position: absolute;
+        left: 50%;
+        bottom: 175px;
+        animation: elongate 2s infinite ease-in-out alternate;
+        display: none;">
+        <img alt="Hand icon" src="https://modelviewer.dev/shared-assets/icons/hand.png">
+      </div>
+    </model-viewer>
   </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Ein Kunstprojekt im Auftrag der Leipzig Tourismus und Marketing GmbH für das 35. Leipziger Lichtfest 2024.</p>
+      <p>Technische Umsetzung: <a href="https://seige.digital/" target="_blank">seige.digital GbR</a> in Zusammenarbeit mit <a href="https://digitalwarenkombinat.de/" target="_blank">Digitalwarenkombinat GbR</a> und Wilhelm Herbrich.</p>
+      <p><a href="https://blaueswunder.maixmayer.studio/datenschutzerklarung.html">Datenschutzerklärung</a></p>
+    </div>
 </div>
 
 <script>
